@@ -8,15 +8,15 @@ function Crypto() {
     useEffect(() => {
         fetch('api/crypto')
             .then(res => res.json())
-            .then(cryptoData => setCryptos(cryptoData));
+            .then(cryptoData => setCryptos(cryptoData.data))
     }, []);
     
     return (
         <div>
-        <h2>Customers</h2>
+        <h2>Top 10 Cryptocurrencies By Market Cap</h2>
         <ul>
             {cryptos.map(crypto => 
-                <li key={crypto.data.id}>{crypto.data.name} {crypto.data.quote.USD.price}</li>
+                <li key={crypto.id}>{crypto.cmc_rank}. <b>{crypto.name}</b> {crypto.quote.USD.price} 24h Change: {crypto.quote.USD.percent_change_24h}</li>
             )}
         </ul>
         </div>
