@@ -1,34 +1,27 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import './customers.css';
 
-class Customers extends Component {
+function Customers() {
     
-    constructor() {
-        super();
-        this.state = {
-            customers: []
-        }
-    }
+    const [customers, setCustomers] = useState([]);
 
-    componentDidMount() {
-        // Call to the backend
+    useEffect(() => {
         fetch('api/customers')
             .then(res => res.json())
-            .then(customers => this.setState({customers}, () => console.log("Customers fetched...", customers)));
-    }
-
-    render() {
-        return (
-            <div>
-            <h2>Customers</h2>
-            <ul>
-                {this.state.customers.map(customer => 
-                    <li key={customer.id}>{customer.firstName} {customer.lastName}</li>
-                )}
-            </ul>
-            </div>
-        );
-    }
+            .then(customerData => setCustomers(customerData));
+    }, []);
+    
+    return (
+        <div>
+        <h2>Customers</h2>
+        <ul>
+            {customers.map(customer => 
+                <li key={customer.id}>{customer.firstName} {customer.lastName}</li>
+            )}
+        </ul>
+        </div>
+    );
+    
     
 }
 
