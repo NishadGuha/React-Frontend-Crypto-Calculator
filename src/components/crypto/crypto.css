@@ -1,4 +1,9 @@
 ul {
     list-style-type: none;
+    font-size: small;
+}
+
+h2 {
+    font-size: small;
 }
 
