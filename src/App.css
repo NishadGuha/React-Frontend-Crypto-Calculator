@@ -1,10 +1,26 @@
 .App {
   text-align: center;
+  margin-top: 55px;
+  
 }
 
-.App-logo {
+.tool {
+  position: absolute;
+  top: 200px;
+}
+
+.powered-by {
+  position: absolute;
+  right: 65px;
+  top: 675px;
+}
+.app-logo {
   height: 4vmin;
   pointer-events: none;
+}
+
+.app-title {
+  font-family: 'Montserrat';
 }
 
 .powered-by { 
@@ -42,4 +58,9 @@ input {
   to {
     transform: rotate(360deg);
   }
+}
+
+.about-button {
+  position: absolute;
+  left: 1050px;
 }

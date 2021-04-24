@@ -1,9 +1,30 @@
 ul {
     list-style-type: none;
     font-size: small;
+    padding: 10px;
+    width: 75%;
+    margin: 0 auto;
+}
+
+li
+{
+  text-align:left;
 }
 
 h2 {
     font-size: small;
 }
 
+.price-drop {
+    color: red;
+}
+
+.price-moon {
+    color: green;
+}
+
+.main-div {
+    position: relative;
+    left: 650px;
+    top: -20px;
+}
