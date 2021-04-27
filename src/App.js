@@ -15,16 +15,19 @@ import AppBar from '@material-ui/core/AppBar'
 import ToolBar from '@material-ui/core/ToolBar'
 import IconButton from '@material-ui/core/IconButton'
 import MenuIcon from '@material-ui/icons/Menu'
+import Video from './vectors/video.mp4';
+import { HeroContainer, HeroBg, VideoBg } from './styles/HeroElements';
 
 const useStyles = makeStyles({
   root: {
-    background: 'linear-gradient(45deg, #3259a8, #3298a8)',
+    background: 'linear-gradient(45deg, #13a81c, #12c788)',
     border: 0,
     borderRadius: 10,
     color: 'white',
     padding: '5px 15px',
     position: 'relative',
-    top: '-400px'
+    top: '20px',
+    left: '-40px'
   }
 })
 
@@ -35,7 +38,7 @@ function ButtonStyled() {
           startIcon={<PlayIcon/>} 
           onClick={() => { console.log("Attributes submitted") }} 
           variant="contained" 
-          color="primary">Submit</Button>
+          color="primary">Calculate</Button>
 }
 
 function App() {
@@ -51,25 +54,30 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-      <AppBar>
-        <ToolBar>
-          <IconButton>
-            <MenuIcon />
-          </IconButton>
-          <Typography className="app-title" variant="h6">
-            Cryptocurrency Profit Calculator
-          </Typography>
-          <Button className="about-button">
-            About
-          </Button>
-        </ToolBar>
-      </AppBar>
+      <HeroContainer>
+        <HeroBg>
+          <VideoBg autoPlay loop muted src={Video} type='video/mp4' />
+        </HeroBg>
+        <AppBar style={{background: '#0c943e'}}>
+          <ToolBar>
+            <IconButton>
+              <MenuIcon />
+            </IconButton>
+            <Typography className="app-title" variant="h6">
+              Cryptocurrency Profit Calculator
+            </Typography>
+            <Button className="about-button">
+              About
+            </Button>
+          </ToolBar>
+        </AppBar>
         <p className="powered-by">Powered by <img src={logo} className="app-logo" alt="logo"/>
         </p>
         <Cryptos />
         <br/>
-        <p className="tool">If I invested $<TextField variant="outlined" color="primary" label="Amount in USD"/> in BTC on <TextField type="date" variant="outlined" color="primary"/>, then today I would have...</p>
+        <p className="tool">If I invested $<TextField variant="filled" color="primary" label="Amount in USD"/> in BTC on <TextField type="date" variant="outlined" color="primary"/>, then today I would have...</p>
         <ButtonStyled />
+      </HeroContainer>
       </header>
     </div>
   );
