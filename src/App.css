@@ -1,36 +1,43 @@
 .App {
   text-align: center;
   margin-top: 55px;
-  
+  font-family: 'Josefin Sans', sans-serif;  
 }
 
 .tool {
   position: absolute;
   top: 200px;
+  background-color: green;
+  border-radius: 10px;
+  padding: 20px;
 }
 
 .powered-by {
   position: absolute;
   right: 65px;
-  top: 675px;
+  top: 700px;
+  background-color: green;
+  padding: 2px;
+  border-radius: 5px;
 }
+
 .app-logo {
   height: 4vmin;
   pointer-events: none;
 }
 
-.app-title {
-  font-family: 'Montserrat';
+#title-name {
+  font-family: 'Josefin Sans', sans-serif;  
+}
+
+#price-list {
+  font-family: 'Josefin Sans', sans-serif;  
 }
 
 .powered-by { 
   font-size: small;
 }
-/* @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-} */
+
 
 input {
   color: white !important;

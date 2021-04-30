@@ -15,6 +15,7 @@ import AppBar from '@material-ui/core/AppBar'
 import ToolBar from '@material-ui/core/ToolBar'
 import IconButton from '@material-ui/core/IconButton'
 import MenuIcon from '@material-ui/icons/Menu'
+import { Grid } from '@material-ui/core';
 import Video from './vectors/video.mp4';
 import { HeroContainer, HeroBg, VideoBg } from './styles/HeroElements';
 
@@ -63,7 +64,7 @@ function App() {
             <IconButton>
               <MenuIcon />
             </IconButton>
-            <Typography className="app-title" variant="h6">
+            <Typography id="title-name" className="app-title" variant="h6">
               Cryptocurrency Profit Calculator
             </Typography>
             <Button className="about-button">
@@ -73,9 +74,9 @@ function App() {
         </AppBar>
         <p className="powered-by">Powered by <img src={logo} className="app-logo" alt="logo"/>
         </p>
-        <Cryptos />
+        <Cryptos id="price-list" className="crypto-list"/>
         <br/>
-        <p className="tool">If I invested $<TextField variant="filled" color="primary" label="Amount in USD"/> in BTC on <TextField type="date" variant="outlined" color="primary"/>, then today I would have...</p>
+        <p className="tool">If I invested $<TextField id="textfield-1" variant="filled" color="primary" label="Amount in USD"/> in BTC on <TextField type="date" variant="outlined" color="primary"/>, then today I would have...</p>
         <ButtonStyled />
       </HeroContainer>
       </header>
