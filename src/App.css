@@ -12,10 +12,15 @@
   padding: 20px;
 }
 
+#submit-button {
+  position: relative;
+  top: 100px;
+  left: -500px;
+}
 .powered-by {
   position: absolute;
   right: 65px;
-  top: 700px;
+  top: 570px;
   background-color: green;
   padding: 2px;
   border-radius: 5px;

@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import logo from './vectors/coinmarketcap-1.svg'
 import './App.css';
 import Cryptos from './components/crypto/crypto'
@@ -8,7 +8,6 @@ import PlayIcon from '@material-ui/icons/PlayCircleFilled'
 import TextField from '@material-ui/core/TextField'
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
-import WebFont from 'webfontloader'
 
 
 import AppBar from '@material-ui/core/AppBar'
@@ -35,22 +34,35 @@ const useStyles = makeStyles({
 function ButtonStyled() {
   const classes = useStyles();
   return <Button 
-          className={classes.root} 
-          startIcon={<PlayIcon/>} 
-          onClick={() => { console.log("Attributes submitted") }} 
+          id="submit-button"
+          className={classes.root}
+          startIcon={<PlayIcon/>}
           variant="contained" 
+          type="submit"
           color="primary">Calculate</Button>
 }
 
 function App() {
 
-  useEffect(() => {
-    WebFont.load({
-      google: {
-        families: ['Montserrat']
-      }
-    });
-   }, []);
+  const [amount, setAmount] = useState();
+  const [date, setDate] = useState("");
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const data = {amount, date};
+
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    };
+
+    const response = await fetch('result', options);
+    const json = await response.json();
+    console.log(json);
+  }
 
   return (
     <div className="App">
@@ -76,8 +88,10 @@ function App() {
         </p>
         <Cryptos id="price-list" className="crypto-list"/>
         <br/>
-        <p className="tool">If I invested $<TextField id="textfield-1" variant="filled" color="primary" label="Amount in USD"/> in BTC on <TextField type="date" variant="outlined" color="primary"/>, then today I would have...</p>
+        <form className="tool" onSubmit={handleSubmit}>
+        If I invested $<TextField value={amount} onInput={ e=>setAmount(e.target.value)} id="textfield-1" variant="filled" color="primary" label="Amount in USD"/> in BTC on <TextField value={date} onInput={ e=>setDate(e.target.value)} type="date" variant="outlined" color="primary"/>, then today I would have...
         <ButtonStyled />
+        </form>
       </HeroContainer>
       </header>
     </div>
