@@ -49,7 +49,8 @@ function App() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const data = {amount, date};
+    var newDate = date.substring(8) + "-" + date.substring(5,8) + date.substring(0,4);
+    const data = {amount, newDate};
 
     const options = {
       method: 'POST',
