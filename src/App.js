@@ -46,6 +46,7 @@ function App() {
 
   const [amount, setAmount] = useState();
   const [date, setDate] = useState("");
+  const [result, setResult] = useState(0);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -62,7 +63,7 @@ function App() {
 
     const response = await fetch('result', options);
     const json = await response.json();
-    console.log(json);
+    setResult(json.currentFiat);
   }
 
   return (
@@ -90,7 +91,7 @@ function App() {
         <Cryptos id="price-list" className="crypto-list"/>
         <br/>
         <form className="tool" onSubmit={handleSubmit}>
-        If I invested $<TextField value={amount} onInput={ e=>setAmount(e.target.value)} id="textfield-1" variant="filled" color="primary" label="Amount in USD"/> in BTC on <TextField value={date} onInput={ e=>setDate(e.target.value)} type="date" variant="outlined" color="primary"/>, then today I would have...
+        If I invested $<TextField value={amount} onInput={ e=>setAmount(e.target.value)} id="textfield-1" variant="filled" color="primary" label="Amount in USD"/> in BTC on <TextField value={date} onInput={ e=>setDate(e.target.value)} type="date" variant="outlined" color="primary"/>, then today I would have {result}
         <ButtonStyled />
         </form>
       </HeroContainer>
