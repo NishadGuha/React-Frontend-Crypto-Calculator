@@ -17,6 +17,8 @@ import MenuIcon from '@material-ui/icons/Menu'
 import { Grid } from '@material-ui/core';
 import Video from './vectors/video.mp4';
 import { HeroContainer, HeroBg, VideoBg } from './styles/HeroElements';
+import NavBar from './components/navbar/navbar'
+import { BrowserRouter as Router } from 'react-router-dom'
 
 const useStyles = makeStyles({
   root: {
@@ -70,6 +72,9 @@ function App() {
     <div className="App">
       <header className="App-header">
       <HeroContainer>
+        {/* <Router>
+          <NavBar/>
+        </Router> */}
         <HeroBg>
           <VideoBg autoPlay loop muted src={Video} type='video/mp4' />
         </HeroBg>
@@ -81,14 +86,15 @@ function App() {
             <Typography id="title-name" className="app-title" variant="h6">
               Cryptocurrency Profit Calculator
             </Typography>
-            <Button className="about-button">
+            <Button className="about-button" id="about-button">
               About
             </Button>
           </ToolBar>
         </AppBar>
-        <p className="powered-by">Powered by <img src={logo} className="app-logo" alt="logo"/>
+        <p className="powered-by" id="powered-by">Powered by <img src={logo} className="app-logo" alt="logo"/>
         </p>
         <Cryptos id="price-list" className="crypto-list"/>
+        <br/>
         <br/>
         <form className="tool" onSubmit={handleSubmit}>
         If I invested $<TextField value={amount} onInput={ e=>setAmount(e.target.value)} id="textfield-1" variant="filled" color="primary" label="Amount in USD"/> in BTC on <TextField value={date} onInput={ e=>setDate(e.target.value)} type="date" variant="outlined" color="primary"/>, then today I would have {result}
